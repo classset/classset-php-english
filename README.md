@@ -1,1 +1,1 @@
-Class Set! Originally started as a studio project of Gabriel Nicolás González Ferreira, driven by good people with good ideas. Today was consolidated as a set of reusable classes to facilitate the development of web applications.
+Classset originally started as a studio project of Gabriel Nicolás González Ferreira, driven by good people with good ideas. Today was consolidated as a set of reusable classes to facilitate the development of web applications.
