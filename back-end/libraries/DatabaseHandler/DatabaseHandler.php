@@ -177,25 +177,25 @@ class DatabaseHandler implements IDatabaseHandler
 	private function execQuery($query)
 	{ 
 		try 
-	    {
+		{
 			$this -> databaseLink -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			$databaseReply = $this -> databaseLink -> prepare($query);
 			$databaseReply -> execute();
-	    }
-
-	    catch(PDOException $exception) 
-	    {
+		}
+		
+		catch(PDOException $exception) 
+		{
 	    	//manage exception and log
-	      	echo $exception -> getMessage();  
-	    }
+			echo $exception -> getMessage();  
+		}
 
-	    return $databaseReply;
+		return $databaseReply;
 	}
 
 	private function execQueriesInTransaction($queries)
 	{ 
 		try 
-	    {
+		{
 			$this -> databaseLink -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			$this -> databaseLink -> beginTransaction();
 			foreach ($queries as $query) 
@@ -204,15 +204,15 @@ class DatabaseHandler implements IDatabaseHandler
 				$databaseReply -> execute();
 			}
 			$this -> databaseLink -> commit();
-	    }
+		}
 
-	    catch(PDOException $exception) 
-	    {
-	    	//manage exception and log
-	      	echo $exception -> getMessage();  
-	    }
+		catch(PDOException $exception) 
+		{
+			//manage exception and log
+			echo $exception -> getMessage();  
+		}
 
-	    return $databaseReply;
+		return $databaseReply;
 	}		
 
 	private function getResultingRowOnArray($databaseReply)
