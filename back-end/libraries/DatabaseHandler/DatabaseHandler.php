@@ -83,95 +83,95 @@ class DatabaseHandler implements IDatabaseHandler
 	public function __set($name, $value)
 	{
 		if (method_exists($this, ($method = 'set'.ucfirst($name))))
-	    {
-	    	$this->$method($value);
-	    }
+		{
+			$this->$method($value);
+		}
 	}
 	/*FOR PROPERTIES*/
 	
 
 	/*GETTERS AND SETTERS*/
-  	private function getHost()
-  	{
-  	    return $this->host;
-  	}
-  	
-  	private function setHost($host)
-  	{
-  	    $this->host = $host;
-  	    return $this;
-  	}
+	private function getHost()
+	{
+	    return $this->host;
+	}
 
-  	private function getPort()
-  	{
-  	    return $this->port;
-  	}
-  	
-  	private function setPort($port)
-  	{
-  	    $this->port = $port;
-  	    return $this;
-  	}
+	private function setHost($host)
+	{
+		$this->host = $host;
+		return $this;
+	}
 
-  	private function getName()
-  	{
-  	    return $this->name;
-  	}
-  	
-  	private function setName($name)
-  	{
-  	    $this->name = $name;
-  	    return $this;
-  	}
+	private function getPort()
+	{
+		return $this->port;
+	}
 
-  	private function getUser()
-  	{
-  	    return $this->user;
-  	}
-  	
-  	private function setUser($user)
-  	{
-  	    $this->user = $user;
-  	    return $this;
-  	}
+	private function setPort($port)
+	{
+		$this->port = $port;
+		return $this;
+	}
 
-  	private function getPassword()
-  	{
-  	    return $this->password;
-  	}
-  	
-  	private function setPassword($password)
-  	{
-  	    $this->password = $password;
-  	    return $this;
-  	}
+	private function getName()
+	{
+		return $this->name;
+	}
 
-  	private function getFilePath()
-  	{
-  	    return $this->filePath;
-  	}
-  	
-  	private function setFilePath($filePath)
-  	{
-  	    $this->filePath = $filePath;
-  	    return $this;
-  	}
+	private function setName($name)
+	{
+		$this->name = $name;
+		return $this;
+	}
+
+	private function getUser()
+	{
+		return $this->user;
+	}
+
+	private function setUser($user)
+	{
+		$this->user = $user;
+		return $this;
+	}
+
+	private function getPassword()
+	{
+		return $this->password;
+	}
+
+	private function setPassword($password)
+	{
+		$this->password = $password;
+		return $this;
+	}
+
+	private function getFilePath()
+	{
+		return $this->filePath;
+	}
+
+	private function setFilePath($filePath)
+	{
+		$this->filePath = $filePath;
+		return $this;
+	}
   	/*GETTERS AND SETTERS*/
 
 	//LOAD DATABASE SYSTEM
 
   	//INTERFACE PUBLIC METHOD
-    public function openDBMS($systemName)
-    {
-    	$ucSystemName = ucfirst($systemName);
+	public function openDBMS($systemName)
+	{
+		$ucSystemName = ucfirst($systemName);
 
-    	require_once "{$ucSystemName}Database.php";
-    	
-    	$databaseClass = "{$ucSystemName}Database";
-    	$this -> databaseObject = new $databaseClass;
-    	$this -> databaseLink = $this -> databaseObject -> openDatabase();
-    	return $this;
-    }
+		require_once "{$ucSystemName}Database.php";
+		
+		$databaseClass = "{$ucSystemName}Database";
+		$this -> databaseObject = new $databaseClass;
+		$this -> databaseLink = $this -> databaseObject -> openDatabase();
+		return $this;
+	}
     //INTERFACE PUBLIC METHOD
 
 	private function execQuery($query)
