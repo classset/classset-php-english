@@ -71,22 +71,22 @@ class DatabaseHandler implements IDatabaseHandler
 	}
 
 	/*FOR PROPERTIES*/
-    public function __get($name)
-    {
-        if (method_exists($this, ($method = 'get'.ucfirst($name))))
-        {
-          return $this->$method();
-        }
-        else return;
-    }
+	public function __get($name)
+	{
+		if (method_exists($this, ($method = 'get'.ucfirst($name))))
+		{
+			return $this->$method();
+		}
+		else return;
+	}
 
-    public function __set($name, $value)
-    {
-        if (method_exists($this, ($method = 'set'.ucfirst($name))))
-        {
-          $this->$method($value);
-        }
-    }
+	public function __set($name, $value)
+	{
+		if (method_exists($this, ($method = 'set'.ucfirst($name))))
+	    {
+	    	$this->$method($value);
+	    }
+	}
 	/*FOR PROPERTIES*/
 	
 
