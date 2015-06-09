@@ -33,7 +33,11 @@ class HtmlMessenger implements IMessenger
 
   	public function say($message)
   	{
-  		  $this->view->setInData($message);
+        if ($this->view instanceof IDataset) 
+        {
+            $this->view->setInData($message);    
+        }
+        
   		  $this->view->display();
   		  exit();
   	}
