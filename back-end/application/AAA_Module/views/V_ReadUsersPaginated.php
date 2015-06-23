@@ -46,15 +46,15 @@ class V_ReadUsersPaginated implements IView, IDataset
         $trs = null;
         foreach ($this->data['users'] as $key => $user) 
         {
-            $trs .= "<tr><td>".$user["name"]."</td>";
+            $trs .= "<tr>"."\n"."<td>".$user["name"]."</td>"."\n";
 
-            $trs .= "<td><a href='?user-id=".$user["id"]."&A_UpdateUserForm'";
-            $trs .= "title='Update User' class='button'>";
-            $trs .= "<i class='glyphicon glyphicon-pencil'></i></a> ";
+            $trs .= "<td>"."\n"."<a href='?user-id=".$user["id"]."&A_UpdateUserForm'";
+            $trs .= " title='Update User' class='button'>";
+            $trs .= "<i class='glyphicon glyphicon-pencil'></i></a> "."\n";
 
             $trs .= "<a href='?user-id=".$user["id"]."&A_DeleteUserConfirmation'";
-            $trs .= "title='Delete User' class='button'>";
-            $trs .= "<i class='glyphicon glyphicon-trash'></i></a></td></tr>";       
+            $trs .= " title='Delete User' class='button'>";
+            $trs .= "<i class='glyphicon glyphicon-trash'></i></a>"."\n"."</td>"."\n"."</tr>"."\n";       
         }
         $dom->whereIdIs("tbody")->insertNode($trs); 
 

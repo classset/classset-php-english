@@ -55,15 +55,10 @@
     define('NOT_IMPLEMENTED', ' has not yet been implemented :(');
 
 //FOR PAGINATION
-    define('FIRST', 'first');    
-    define('LAST', 'last');
-    define('NEXT', 'next');
-    define('PREVIOUS', 'previous');
-    define('ROWS_PER_PAGE', 'Rows per page: ');
-    define('SET_PAGE', 'Set page: ');
-    define('APPLY', 'apply');
-    define('GO_TO', 'Go to: ');
-    define('PAGE', 'Page: ');
-    define('OF', ' of ');
+    // define('ROWS_PER_PAGE', 'Rows per page: ');
+    // define('GO_TO', 'Go to: ');
+    define('CL_PAGE', 'Page: ');
+    define('CL_OF', ' of ');
+    define('CL_NO_RESULTS', 'No results!');
     
 ?>
