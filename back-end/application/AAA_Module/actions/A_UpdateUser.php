@@ -31,7 +31,7 @@ class A_UpdateUser implements IAction
         $name = $params->get('user-name');
         $password = $params->get('user-password');
         $passwordConfirmation = $params->get('password-confirmation');
-        $encryptPassword = crypt($password);
+        $encryptPassword = password_hash($password, PASSWORD_DEFAULT);
 
         $session = SessionFactory::create();
         $id = $session->get('user-id');
@@ -62,5 +62,4 @@ class A_UpdateUser implements IAction
         $redirector->redirectTo('index.php?A_ReadUsersPaginated');
 	}
 }
-
 ?>

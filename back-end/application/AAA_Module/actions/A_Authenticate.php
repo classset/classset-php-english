@@ -48,7 +48,7 @@ class A_Authenticate implements IAction
             $existingUser = $datahandler->getOutData();    
 
             //ENCRYPTOR
-            $isAuthenticate = (crypt($userpassword, $existingUser['password']) === $existingUser['password']);
+            $isAuthenticate = (password_verify($userpassword, $existingUser['password']));
 
             if( $isAuthenticate )
             {
@@ -64,5 +64,4 @@ class A_Authenticate implements IAction
         }
     }
 }
-
 ?>
