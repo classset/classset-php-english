@@ -25,7 +25,7 @@
 require_once 'back-end/configurations/Autoloader.php';
 
 final class Application
-{	
+{
 	public static function run()
 	{
 		Autoloader::init();
@@ -37,5 +37,4 @@ final class Application
 		$requestHandler -> handle($_REQUEST);
 	}
 }
-
 ?>

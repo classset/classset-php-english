@@ -26,9 +26,9 @@ class A_CreateRoleForm implements IAction
 {
 	public function execute()
 	{
-        $view = ViewFactory::create('V_CreateRoleForm');
-        $view->display();
-    }
+		$view = ViewFactory::create('V_CreateRoleForm');
+		$view->display();
+	}
 }
 
 ?>
