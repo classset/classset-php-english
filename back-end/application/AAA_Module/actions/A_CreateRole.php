@@ -24,32 +24,32 @@
 
 class A_CreateRole implements IAction
 {
-	public function execute()
-	{
-		//PARAMETERS
-		$params = RequestParametersFactory::create();
-		$name = $params->get('role-name');
-		$description = $params->get('role-description');
-		
-		//FILTERS
-		$filter = FilterFactory::create();
-		$filteredName = $filter->filters($name);
+    public function execute()
+    {
+        //PARAMETERS
+        $params = RequestParametersFactory::create();
+        $name = $params->get('role-name');
+        $description = $params->get('role-description');
 
-		//VALIDATOR//VALIDO QUE EL ROLE YA NO EXISTA
-		$datahandler = DatahandlerFactory::create();
-		$datahandler['D_ReadRoleByName']->setInData($filteredName);
-		$existingRole = $datahandler['D_ReadRoleByName']->getOutData();
-		$validator = ValidatorFactory::create();
-		$validator->ifFalse( ($existingRole['name'] == null) )
-					->respond(EXISTING_ROLE);
+        //FILTERS
+        $filter = FilterFactory::create();
+        $filteredName = $filter->filters($name);
 
-		//DATAHANDLER
-		$datahandler['D_CreateRole']->setInData( array("name" => "$name", 
-														"description" => "$description"));
+        //VALIDATOR//VALIDO QUE EL ROLE YA NO EXISTA
+        $datahandler = DatahandlerFactory::create();
+        $datahandler['D_ReadRoleByName']->setInData($filteredName);
+        $existingRole = $datahandler['D_ReadRoleByName']->getOutData();
+        $validator = ValidatorFactory::create();
+        $validator->ifFalse( ($existingRole['name'] == null) )
+                    ->respond(EXISTING_ROLE);
 
-		//REDIRECTOR
-		$redirector = RedirectorFactory::create();
-		$redirector->redirectTo('index.php?A_ReadRolesPaginated');
-	}
+        //DATAHANDLER
+        $datahandler['D_CreateRole']->setInData( array("name" => "$name", 
+                                                        "description" => "$description"));
+
+        //REDIRECTOR
+        $redirector = RedirectorFactory::create();
+        $redirector->redirectTo('index.php?A_ReadRolesPaginated');
+    }
 }
 ?>
