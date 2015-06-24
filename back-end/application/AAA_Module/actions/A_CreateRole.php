@@ -44,19 +44,12 @@ class A_CreateRole implements IAction
 					->respond(EXISTING_ROLE);
 
 		//DATAHANDLER
-		$datahandler['D_CreateRole']->setInData
-					(
-						array
-						(
-							"name" => "$name", 
-							"description" => "$description"
-						)
-					);
+		$datahandler['D_CreateRole']->setInData( array("name" => "$name", 
+														"description" => "$description"));
 
 		//REDIRECTOR
 		$redirector = RedirectorFactory::create();
 		$redirector->redirectTo('index.php?A_ReadRolesPaginated');
 	}
 }
-
 ?>
