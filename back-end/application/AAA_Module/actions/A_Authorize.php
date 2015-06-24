@@ -36,15 +36,9 @@ class A_Authorize implements IAction
 
         //Datahandler
         $datahandler = DatahandlerFactory::create('D_ReadAllowedRoles');
-        $datahandler->setInData
-        				(
-        					array
-        					(
-        						'action-name' => $selectedActionKey,
-        						'user-id' => $userId,
-        						'admin-role-id' => 1
-        					)
-        				);
+        $datahandler->setInData(array('action-name' => $selectedActionKey,
+            						  'user-id' => $userId,
+            						  'admin-role-id' => 1));
         					
         $allowedRoles = $datahandler->getOutData();
 
