@@ -24,54 +24,53 @@
 
 class A_Main implements IAction
 {
-	public function execute()
-	{
+    public function execute()
+    {
         //SESSION
         $session = SessionFactory::create();
-        
-		if ($session->get("authenticated") == null) $session->set("authenticated", false);
 
-		if ($session->get("authorized") == null) $session->set("authorized", false);
+        if ($session->get("authenticated") == null) $session->set("authenticated", false);
 
-		//ACTIONS
-		$actions = ActionFactory::create();
-		
-		//REQUESTHANDLER AND SELECTACTIONKEY
-		$requestHandler = RequestHandlerFactory::create();
-		$selectedActionKey = $requestHandler->getSelectedActionKey();			
-		
-		//VALIDATOR
-		$validator = ValidatorFactory::create();
-		
-		//REDIRECTOR
-		$redirector = RedirectorFactory::create();
+        if ($session->get("authorized") == null) $session->set("authorized", false);
 
-		//MAIN
-		$validator->ifFalse( $session->get("authenticated") )
-					->execute($actions['A_Authenticate']);	
-		
-		$validator->ifTrue( $selectedActionKey == 'A_Logout' )
-					->execute($actions['A_Logout']);
+        //ACTIONS
+        $actions = ActionFactory::create();
 
-		$validator->ifFalse( $session->get("authenticated") )
-					->execute($actions['A_Logout']);
+        //REQUESTHANDLER AND SELECTACTIONKEY
+        $requestHandler = RequestHandlerFactory::create();
+        $selectedActionKey = $requestHandler->getSelectedActionKey();
 
-		$actions['A_Authorize']->execute();
+        //VALIDATOR
+        $validator = ValidatorFactory::create();
 
-		$validator->ifFalse( $session->get("authorized") )
-					->respond(NO_AUTHORIZED_ACTION);
+        //REDIRECTOR
+        $redirector = RedirectorFactory::create();
 
-		$validator->ifTrue( $selectedActionKey == "" )
-					->redirectTo('index.php?A_ReadUsersPaginated');	
+        //MAIN
+        $validator->ifFalse( $session->get("authenticated") )
+                    ->execute($actions['A_Authenticate']);	
 
-		$validator->ifTrue( $selectedActionKey == "A_Authenticate" )
-					->redirectTo('index.php?A_ReadUsersPaginated');
+        $validator->ifTrue( $selectedActionKey == 'A_Logout' )
+                    ->execute($actions['A_Logout']);
 
-		$validator->ifFalse( array_key_exists($selectedActionKey, $actions) )
-					->respond($selectedActionKey." ".NOT_IMPLEMENTED);
+        $validator->ifFalse( $session->get("authenticated") )
+                    ->execute($actions['A_Logout']);
 
-		$actions[$selectedActionKey]->execute();
-	}
+        $actions['A_Authorize']->execute();
+
+        $validator->ifFalse( $session->get("authorized") )
+                    ->respond(NO_AUTHORIZED_ACTION);
+
+        $validator->ifTrue( $selectedActionKey == "" )
+                    ->redirectTo('index.php?A_ReadUsersPaginated');
+
+        $validator->ifTrue( $selectedActionKey == "A_Authenticate" )
+                    ->redirectTo('index.php?A_ReadUsersPaginated');
+
+        $validator->ifFalse( array_key_exists($selectedActionKey, $actions) )
+                    ->respond($selectedActionKey." ".NOT_IMPLEMENTED);
+
+        $actions[$selectedActionKey]->execute();
+    }
 }
-
 ?>
