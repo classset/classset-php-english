@@ -35,7 +35,7 @@ class A_CreateRole implements IAction
         $filter = FilterFactory::create();
         $filteredName = $filter->filters($name);
 
-        //VALIDATOR//VALIDO QUE EL ROLE YA NO EXISTA
+        //VALIDATOR (EXISTING ROLE)
         $datahandler = DatahandlerFactory::create();
         $datahandler['D_ReadRoleByName']->setInData($filteredName);
         $existingRole = $datahandler['D_ReadRoleByName']->getOutData();
