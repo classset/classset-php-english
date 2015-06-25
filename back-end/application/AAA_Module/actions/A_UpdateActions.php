@@ -41,5 +41,4 @@ class A_UpdateActions implements IAction
         $redirector->redirectTo('index.php?selected-role-id='.$selectedRoleId.'&A_ReadActionsWithStatus');
     }
 }
-
 ?>

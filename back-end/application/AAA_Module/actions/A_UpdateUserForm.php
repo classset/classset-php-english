@@ -41,5 +41,4 @@ class A_UpdateUserForm implements IAction
         $view->display();
     }
 }
-
 ?>

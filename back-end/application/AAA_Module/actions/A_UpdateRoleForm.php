@@ -41,5 +41,4 @@ class A_UpdateRoleForm implements IAction
         $view->display();
     }
 }
-
 ?>

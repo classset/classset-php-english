@@ -24,8 +24,8 @@
 
 class A_UpdateRole implements IAction
 {
-	public function execute()
-	{
+    public function execute()
+    {
         //PARAMETERS
         $params = RequestParametersFactory::create();
         $name = $params->get('role-name');
@@ -57,7 +57,6 @@ class A_UpdateRole implements IAction
         //REDIRECTOR
         $redirector = RedirectorFactory::create();
         $redirector->redirectTo('index.php?A_ReadRolesPaginated');
-	}
+    }
 }
-
 ?>

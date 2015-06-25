@@ -24,15 +24,14 @@
 
 class A_SelectUserToAssignRoles implements IAction
 {
-	public function execute()
-	{
+    public function execute()
+    {
         $datahandler = DatahandlerFactory::create('D_ReadAllUsers');
         $data = $datahandler->getOutData();
-		
+        
         $view = ViewFactory::create('V_SelectUserToAssignRoles');
         $view->setInData($data);
-		$view->display();
-	}
+        $view->display();
+    }
 }
-
 ?>

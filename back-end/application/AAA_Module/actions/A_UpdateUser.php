@@ -24,8 +24,8 @@
 
 class A_UpdateUser implements IAction
 {
-	public function execute()
-	{
+    public function execute()
+    {
         //PARAMETERS
         $params = RequestParametersFactory::create();
         $name = $params->get('user-name');
@@ -60,6 +60,6 @@ class A_UpdateUser implements IAction
         //REDIRECTOR
         $redirector = RedirectorFactory::create();
         $redirector->redirectTo('index.php?A_ReadUsersPaginated');
-	}
+    }
 }
 ?>
