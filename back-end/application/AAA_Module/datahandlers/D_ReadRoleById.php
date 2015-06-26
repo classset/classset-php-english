@@ -22,22 +22,21 @@
  *  WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  **/
 
-class D_ReadRoleById implements IDataset, IDataget 
-{	
-	private $data;
+class D_ReadRoleById implements IDataset, IDataget
+{
+    private $data;
 
-	public function setInData($data)
-	{
-		$this->data = $data;
-	}
+    public function setInData($data)
+    {
+        $this->data = $data;
+    }
 
-	public function getOutData()
-	{
-		$id = $this->data;
-		$query = "SELECT * FROM roles WHERE id = '$id'";
+    public function getOutData()
+    {
+        $id = $this->data;
+        $query = "SELECT * FROM roles WHERE id = '$id'";
         $db = DatabaseFactory::create()->connect();
         return $db->SQLFetchArray($query);
-	}
+    }
 }
-
 ?>

@@ -23,39 +23,38 @@
  **/
 
 class D_UpdateActions implements IDataset
-{	
-	public function setInData($data)
-	{
-		$allActions = $data;
-		$allActionsKeys = array_keys($allActions);
-		
-		$db = DatabaseFactory::create()->connect();
-		$query1 = "SELECT actions.name FROM actions";
-		$oldActions = $db->SQLFetchAllArray($query1);
-		
-		$oldActionsValues = array();
-		foreach ($oldActions as $key => $actions) 
-		{
-			foreach ($actions as $key => $actionValue) 
-			{
-				array_push($oldActionsValues, $actionValue);
-			}
-		}
+{
+    public function setInData($data)
+    {
+        $allActions = $data;
+        $allActionsKeys = array_keys($allActions);
+        
+        $db = DatabaseFactory::create()->connect();
+        $query1 = "SELECT actions.name FROM actions";
+        $oldActions = $db->SQLFetchAllArray($query1);
+        
+        $oldActionsValues = array();
+        foreach ($oldActions as $key => $actions) 
+        {
+            foreach ($actions as $key => $actionValue) 
+            {
+                array_push($oldActionsValues, $actionValue);
+            }
+        }
 
-		$newActions = array_diff($allActionsKeys, $oldActionsValues);
-		if($newActions != array())
-		{
-			$queries = array();
-			foreach ($newActions as $actionKey => $actionValue) 
-			{
-				$query2 = "INSERT INTO actions (name) VALUES ('$actionValue')";
-				array_push($queries, $query2);
-			}		
-			$db = DatabaseFactory::create()->connect();
-			$db->SQLTransaction($queries);
-		}
+        $newActions = array_diff($allActionsKeys, $oldActionsValues);
+        if($newActions != array())
+        {
+            $queries = array();
+            foreach ($newActions as $actionKey => $actionValue) 
+            {
+                $query2 = "INSERT INTO actions (name) VALUES ('$actionValue')";
+                array_push($queries, $query2);
+            }       
+            $db = DatabaseFactory::create()->connect();
+            $db->SQLTransaction($queries);
+        }
 
-	}
+    }
 }
-
 ?>

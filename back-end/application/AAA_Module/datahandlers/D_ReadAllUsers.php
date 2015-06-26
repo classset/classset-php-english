@@ -23,12 +23,11 @@
  **/
 
 class D_ReadAllUsers implements IDataget
-{	
-	public function getOutData()
-	{
+{
+    public function getOutData()
+    {
         $db = DatabaseFactory::create()->connect();
-		return $db->SQLFetchAllArray("SELECT * FROM users ORDER BY name");
-	}
+        return $db->SQLFetchAllArray("SELECT * FROM users ORDER BY name");
+    }
 }
-
 ?>

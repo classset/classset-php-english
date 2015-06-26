@@ -23,23 +23,22 @@
  **/
 
 class D_SearchUsersByName implements IDataset, IDataget 
-{	
-	private $data;
+{
+    private $data;
 
-	public function setInData($data)
-	{
-		$this->data = $data;
-	}
+    public function setInData($data)
+    {
+        $this->data = $data;
+    }
 
-	public function getOutData()
-	{
+    public function getOutData()
+    {
 
-		$name = $this->data;
-		$query = "SELECT * FROM users WHERE name LIKE '%$name%'";
+        $name = $this->data;
+        $query = "SELECT * FROM users WHERE name LIKE '%$name%'";
 
         $db = DatabaseFactory::create()->connect();
         return $db->SQLFetchAllArray($query);
-	}
+    }
 }
-
 ?>

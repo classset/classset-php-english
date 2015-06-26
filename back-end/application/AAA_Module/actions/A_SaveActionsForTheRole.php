@@ -24,8 +24,8 @@
 
 class A_SaveActionsForTheRole implements IAction
 {
-	public function execute()
-	{
+    public function execute()
+    {
         //SESSION
         $session = SessionFactory::create();
         $selectedRoleId = $session->get('selected-role-id');
@@ -42,11 +42,10 @@ class A_SaveActionsForTheRole implements IAction
                     'selected-actions-names' => $selectedActionsNames
                 );
         $datahandler->setInData($data);
-		
+        
         //REDIRECTOR
         $redirector = RedirectorFactory::create();
         $redirector->redirectTo('index.php?selected-role-id='.$selectedRoleId.'&A_ReadActionsWithStatus');
-	}
+    }
 }
-
 ?>

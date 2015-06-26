@@ -56,5 +56,4 @@ class A_ReadRolesPaginated implements IAction
         $view->display();
     }
 }
-
 ?>

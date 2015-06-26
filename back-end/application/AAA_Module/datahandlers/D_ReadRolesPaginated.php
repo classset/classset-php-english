@@ -23,17 +23,16 @@
  **/
 
 class D_ReadRolesPaginated implements IDataget
-{	
+{
     public function getOutData()
     {
         $paginator = PaginatorFactory::create();
         $beginning = $paginator->beginning;
         $rowsPerPage = $paginator->rowsPerPage;
         $query = "SELECT * FROM roles ORDER BY name LIMIT $beginning, $rowsPerPage";
-                  
+
         $db = DatabaseFactory::create()->connect();
         return $db->SQLFetchAllArray($query);
     }
 }
-
 ?>

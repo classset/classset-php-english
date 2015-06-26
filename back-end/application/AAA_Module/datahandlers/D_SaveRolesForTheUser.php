@@ -23,30 +23,29 @@
  **/
 
 class D_SaveRolesForTheUser implements IDataset
-{	
-	private $data;
+{
+    private $data;
 
-	public function setInData($data)
-	{
-		$this->data = $data;
-		$rolesIds = $this->data['selected-roles-ids'];
-		$userId = $this->data['selected-user-id'];
+    public function setInData($data)
+    {
+        $this->data = $data;
+        $rolesIds = $this->data['selected-roles-ids'];
+        $userId = $this->data['selected-user-id'];
 
-		$queries = array();
+        $queries = array();
 
-		$query1 = "DELETE FROM users_roles WHERE user_id='$userId'";
-		array_push($queries, $query1);
+        $query1 = "DELETE FROM users_roles WHERE user_id='$userId'";
+        array_push($queries, $query1);
 
-		foreach ($rolesIds as $roleId) 
-		{
-			$query2 = "INSERT INTO users_roles (user_id, role_id) 
-						VALUES ('$userId', '$roleId')";
-			array_push($queries, $query2);
-		}
+        foreach ($rolesIds as $roleId) 
+        {
+            $query2 = "INSERT INTO users_roles (user_id, role_id) 
+                        VALUES ('$userId', '$roleId')";
+            array_push($queries, $query2);
+        }
 
         $db = DatabaseFactory::create()->connect();
-		$db -> SQLTransaction($queries);
-	}
+        $db -> SQLTransaction($queries);
+    }
 }
-
 ?>

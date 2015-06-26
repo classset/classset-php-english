@@ -23,9 +23,9 @@
  **/
 
 class D_UpdateRole implements IDataset
-{	
-	public function setInData($data)
-	{
+{
+    public function setInData($data)
+    {
         $id = $data['id'];
         $name = $data['name'];
         $description = $data['description'];
@@ -37,7 +37,6 @@ class D_UpdateRole implements IDataset
 
         $db = DatabaseFactory::create()->connect();
         $db->SQLQuery($query);
-	}
+    }
 }
-
 ?>

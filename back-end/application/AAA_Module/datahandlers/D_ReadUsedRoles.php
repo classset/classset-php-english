@@ -23,17 +23,17 @@
  **/
 
 class D_ReadUsedRoles implements IDataset, IDataget 
-{	
-	  private $data;
+{
+    private $data;
 
-	  public function setInData($data)
-	  {
-		    $this->data = $data;
-	  }
+    public function setInData($data)
+    {
+        $this->data = $data;
+    }
 
     public function getOutData()
     {
-		    $id = $this->data;
+        $id = $this->data;
  
         $query = "SELECT users.*, 1 as status
                   FROM users 
@@ -45,5 +45,4 @@ class D_ReadUsedRoles implements IDataset, IDataget
         return $db->SQLFetchAllArray($query);
     }
 }
-
 ?>

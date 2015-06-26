@@ -23,21 +23,20 @@
  **/
 
 class D_SearchRolesByName implements IDataset, IDataget 
-{	
-	private $data;
+{
+    private $data;
 
-	public function setInData($data)
-	{
-		$this->data = $data;
-	}
+    public function setInData($data)
+    {
+        $this->data = $data;
+    }
 
-	public function getOutData()
-	{
-		$name = $this->data;
-		$query = "SELECT * FROM roles WHERE name LIKE '%$name%'";
+    public function getOutData()
+    {
+        $name = $this->data;
+        $query = "SELECT * FROM roles WHERE name LIKE '%$name%'";
         $db = DatabaseFactory::create()->connect();
         return $db->SQLFetchAllArray($query);
-	}
+    }
 }
-
 ?>

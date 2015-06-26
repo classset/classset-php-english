@@ -24,8 +24,8 @@
 
 class A_ReadAllUsers implements IAction
 {
-	public function execute()
-	{
+        public function execute()
+        {
         //DATAHANDLER
         $datahandler = DatahandlerFactory::create('D_ReadAllUsers');
         $data = $datahandler->getOutData();
@@ -34,7 +34,6 @@ class A_ReadAllUsers implements IAction
         $view = ViewFactory::create('V_ReadAllUsers');
         $view->setInData($data);
         $view->display();
-	}
+        }
 }
-
 ?>

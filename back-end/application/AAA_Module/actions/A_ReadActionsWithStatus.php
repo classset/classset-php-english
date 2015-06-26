@@ -24,8 +24,8 @@
 
 class A_ReadActionsWithStatus implements IAction
 {
-	public function execute()
-	{
+    public function execute()
+    {
         //PARAMETERS
         $params = RequestParametersFactory::create();
         $roleId = $params->get('selected-role-id');
@@ -70,7 +70,6 @@ class A_ReadActionsWithStatus implements IAction
         $view = ViewFactory::create('V_ReadActionsWithStatus');
         $view->setInData($data);
         $view->display();
-	}
+    }
 }
-
 ?>

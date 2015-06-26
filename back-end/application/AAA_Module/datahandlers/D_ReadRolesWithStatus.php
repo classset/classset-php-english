@@ -23,17 +23,17 @@
  **/
 
 class D_ReadRolesWithStatus implements IDataset, IDataget 
-{	
-	private $data;
+{   
+    private $data;
 
-	public function setInData($data)
-	{
-		$this->data = $data;
-	}
+    public function setInData($data)
+    {
+        $this->data = $data;
+    }
 
-	public function getOutData()
-	{
-		$id = $this->data;
+    public function getOutData()
+    {
+        $id = $this->data;
  
         $query = "SELECT roles.*, 1 as status
                   FROM roles 
@@ -41,22 +41,21 @@ class D_ReadRolesWithStatus implements IDataset, IDataget
                   ON users_roles.role_id = roles.id
                   WHERE users_roles.user_id = $id
 
-				  UNION
+                  UNION
 
-				  SELECT roles.*, 0 as status
+                  SELECT roles.*, 0 as status
                   FROM roles 
                   WHERE roles.id NOT IN 
                   (
-                  	SELECT roles.id
-			      	FROM roles
-		    	  	LEFT JOIN users_roles
-		          	ON users_roles.role_id = roles.id
-		          	WHERE users_roles.user_id = $id
-		          )";
+                    SELECT roles.id
+                    FROM roles
+                    LEFT JOIN users_roles
+                    ON users_roles.role_id = roles.id
+                    WHERE users_roles.user_id = $id
+                  )";
 
         $db = DatabaseFactory::create()->connect();
         return $db -> SQLFetchAllArray($query);
-	}
+    }
 }
-
 ?>

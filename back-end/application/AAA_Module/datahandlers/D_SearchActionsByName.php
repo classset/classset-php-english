@@ -23,19 +23,19 @@
  **/
 
 class D_SearchActionsByName implements IDataset, IDataget 
-{	
-	private $data;
+{   
+    private $data;
 
-	public function setInData($data)
-	{
-		$this->data = $data;
-	}
+    public function setInData($data)
+    {
+        $this->data = $data;
+    }
 
-	public function getOutData()
-	{
+    public function getOutData()
+    {
 
-		$id = $this->data["selected-role-id"];
-		$name = $this->data["search-action-name"];
+        $id = $this->data["selected-role-id"];
+        $name = $this->data["search-action-name"];
  
         $query = "SELECT actions.*, 1 as status
                   FROM actions 
@@ -44,23 +44,22 @@ class D_SearchActionsByName implements IDataset, IDataget
                   WHERE roles_actions.role_id = $id
                   AND actions.name LIKE '%$name%'
 
-				  UNION
+                  UNION
 
-				  SELECT actions.*, 0 as status
+                  SELECT actions.*, 0 as status
                   FROM actions 
                   WHERE actions.name NOT IN 
                   (
-                  	SELECT actions.name
-			      	FROM actions
-		    	  	LEFT JOIN roles_actions
-		          	ON roles_actions.action_name = actions.name
-		          	WHERE roles_actions.role_id = $id
-		          ) AND actions.name LIKE '%$name%'
-					ORDER BY actions.name DESC";
+                    SELECT actions.name
+                    FROM actions
+                    LEFT JOIN roles_actions
+                    ON roles_actions.action_name = actions.name
+                    WHERE roles_actions.role_id = $id
+                  ) AND actions.name LIKE '%$name%'
+                    ORDER BY actions.name DESC";
 
         $db = DatabaseFactory::create()->connect();
         return $db->SQLFetchAllArray($query);
-	}
+    }
 }
-
 ?>

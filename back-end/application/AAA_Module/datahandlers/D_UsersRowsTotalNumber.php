@@ -23,13 +23,12 @@
  **/
 
 class D_UsersRowsTotalNumber implements IDataget 
-{	
-	public function getOutData()
-	{
-		$db = DatabaseFactory::create()->connect();
-		$rowsTotalNumberInArray = $db->SQLFetchArray("SELECT COUNT(*) FROM users");
+{   
+    public function getOutData()
+    {
+        $db = DatabaseFactory::create()->connect();
+        $rowsTotalNumberInArray = $db->SQLFetchArray("SELECT COUNT(*) FROM users");
         return (int)$rowsTotalNumberInArray['COUNT(*)'];
-	}
+    }
 }
-
 ?>

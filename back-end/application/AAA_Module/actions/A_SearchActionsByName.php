@@ -24,8 +24,8 @@
 
 class A_SearchActionsByName implements IAction
 {
-	public function execute()
-	{
+    public function execute()
+    {
         //PARAMETERS
         $params = RequestParametersFactory::create();
         
@@ -52,7 +52,6 @@ class A_SearchActionsByName implements IAction
         $view = ViewFactory::create('V_ReadActionsWithStatus');
         $view->setInData($data);
         $view->display();
-	}
+    }
 }
-
 ?>

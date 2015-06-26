@@ -36,5 +36,4 @@ class A_ReadAllRoles implements IAction
         $view->display();
     }
 }
-
 ?>

@@ -38,7 +38,7 @@ class V_ReadActionsWithStatus implements IView, IDataset
 
         $session = SessionFactory::create();
         $dom->whereIdIs('login-user')
-                ->insertNode($session->get('session-user-name'));  
+                ->insertNode($session->get('session-user-name'));
 
         $dom->whereIdIs('message-container')
             ->insertNode('Actions Assignment for: '.$this->data['role-name']);
@@ -47,10 +47,10 @@ class V_ReadActionsWithStatus implements IView, IDataset
                 ->removeAttribute('style="display: none;"');
         
         $dom->whereIdIs('actions-assignment-form')
-                ->removeAttribute('style="display: none;"');    
+                ->removeAttribute('style="display: none;"');
 
         $trs = null;
-        foreach($this->data['role-actions'] as $actionRole) 
+        foreach($this->data['role-actions'] as $actionRole)
         {
             if ($actionRole['status'] == 1) 
             {
@@ -59,7 +59,7 @@ class V_ReadActionsWithStatus implements IView, IDataset
                         <b>'.$actionRole['name'].'</b>
                     </label>
                     </td>
-                    <td><input name="selected-actions-names[]" 
+                    <td><input name="selected-actions-names[]"
                         type="checkbox" 
                         value="'.$actionRole['name'].'" checked
                     ></td>
@@ -82,11 +82,12 @@ class V_ReadActionsWithStatus implements IView, IDataset
         $dom->whereIdIs('tbody')->insertNode($trs);
 
         $id = $session->get('selected-role-id');
-        $paginator = PaginatorFactory::create();
-        $paginator->action = "selected-role-id=".$id."&A_ReadActionsWithStatus";
-        $dom->whereIdIs('ul-pagination')
-            ->insertNode($paginator->paginationSelect);
+        // $paginator = PaginatorFactory::create();
+        // $paginator->action = "selected-role-id=".$id."&A_ReadActionsWithStatus";
+        // $dom->whereIdIs('ul-pagination')
+        //     ->insertNode($paginator->paginationSelect);
 
         $dom->display();
     }
 }
+?>

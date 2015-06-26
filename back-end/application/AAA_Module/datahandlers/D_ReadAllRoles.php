@@ -23,12 +23,11 @@
  **/
 
 class D_ReadAllRoles implements IDataget
-{	
-	public function getOutData()
-	{
+{
+    public function getOutData()
+    {
         $db = DatabaseFactory::create()->connect();
-		return $db->SQLFetchAllArray("SELECT * FROM roles ORDER BY name");
-	}
+        return $db->SQLFetchAllArray("SELECT * FROM roles ORDER BY name");
+    }
 }
-
 ?>

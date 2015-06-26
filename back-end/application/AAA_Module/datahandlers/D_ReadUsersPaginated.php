@@ -23,7 +23,7 @@
  **/
 
 class D_ReadUsersPaginated implements IDataget
-{	
+{
     public function getOutData()
     {
         $paginator = PaginatorFactory::create();
@@ -35,5 +35,4 @@ class D_ReadUsersPaginated implements IDataget
         return $db->SQLFetchAllArray($query);
     }
 }
-
 ?>

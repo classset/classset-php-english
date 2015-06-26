@@ -38,5 +38,4 @@ class A_SearchRolesByName implements IAction
         $view->display();
     }
 }
-
 ?>

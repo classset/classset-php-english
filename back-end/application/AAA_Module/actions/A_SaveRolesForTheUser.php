@@ -24,8 +24,8 @@
 
 class A_SaveRolesForTheUser implements IAction
 {
-	public function execute()
-	{
+    public function execute()
+    {
         //SESSION
         $session = SessionFactory::create();
         $selectedUserId = $session->get('selected-user-id');
@@ -42,11 +42,10 @@ class A_SaveRolesForTheUser implements IAction
                     'selected-roles-ids' => $selectedRolesIds
                 );
         $datahandler->setInData($data);
-		
+        
         //REDIRECTOR
         $redirector = RedirectorFactory::create();
         $redirector->redirectTo('index.php?selected-user-id='.$selectedUserId.'&A_ReadRolesWithStatus');
-	}
+    }
 }
-
 ?>

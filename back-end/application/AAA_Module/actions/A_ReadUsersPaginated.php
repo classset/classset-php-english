@@ -59,5 +59,4 @@ class A_ReadUsersPaginated implements IAction
         $view->display();
     }
 }
-
 ?>

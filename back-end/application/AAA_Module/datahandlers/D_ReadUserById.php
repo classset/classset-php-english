@@ -23,22 +23,21 @@
  **/
 
 class D_ReadUserById implements IDataset, IDataget 
-{	
-	private $data;
+{
+    private $data;
 
-	public function setInData($data)
-	{
-		$this->data = $data;
-	}
+    public function setInData($data)
+    {
+        $this->data = $data;
+    }
 
-	public function getOutData()
-	{
-		$id = $this->data;
-		$query = "SELECT * FROM users WHERE id = $id";
+    public function getOutData()
+    {
+        $id = $this->data;
+        $query = "SELECT * FROM users WHERE id = $id";
 
         $db = DatabaseFactory::create()->connect();
         return $db->SQLFetchArray($query);
-	}
+    }
 }
-
 ?>

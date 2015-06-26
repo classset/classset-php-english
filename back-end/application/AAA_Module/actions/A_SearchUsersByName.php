@@ -38,5 +38,4 @@ class A_SearchUsersByName implements IAction
         $view->display();
     }
 }
-
 ?>

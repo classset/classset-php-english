@@ -23,9 +23,9 @@
  **/
 
 class D_UpdateUser implements IDataset
-{	
-	public function setInData($data)
-	{  
+{
+    public function setInData($data)
+    {  
         $name = $data['name'];
         $password = $data['password'];
         $id = $data['id'];
@@ -37,7 +37,6 @@ class D_UpdateUser implements IDataset
 
         $db = DatabaseFactory::create()->connect();
         $db->SQLQuery($query);
-	}
+    }
 }
-
 ?>

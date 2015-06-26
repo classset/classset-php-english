@@ -23,17 +23,17 @@
  **/
 
 class D_ReadUsersForTheRole implements IDataset, IDataget 
-{	
+{
     private $data;
 
-	  public function setInData($data)
-	  {
-		    $this->data = $data;
-	  }
+      public function setInData($data)
+      {
+            $this->data = $data;
+      }
 
-	  public function getOutData()
-	  {
-		    $id = $this->data;
+      public function getOutData()
+      {
+            $id = $this->data;
  
         $query = "SELECT roles.*
                   FROM roles 
@@ -43,7 +43,6 @@ class D_ReadUsersForTheRole implements IDataset, IDataget
 
         $db = DatabaseFactory::create()->connect();
         return $db->SQLFetchAllArray($query);
-	  }
+      }
 }
-
 ?>

@@ -22,19 +22,19 @@
  *  WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  **/
 
-class D_ReadRolesForTheUser implements IDataset, IDataget 
-{	
+class D_ReadRolesForTheUser implements IDataset, IDataget
+{
     private $data;
 
     public function setInData($data)
     {
-		    $this->data = $data;
+        $this->data = $data;
     }
 
     public function getOutData()
-	  {
-		    $id = $this->data;
- 
+    {
+        $id = $this->data;
+
         $query = "SELECT roles.*
                   FROM roles 
                   LEFT JOIN users_roles
@@ -43,7 +43,6 @@ class D_ReadRolesForTheUser implements IDataset, IDataget
 
         $db = DatabaseFactory::create()->connect();
         return $db->SQLFetchAllArray($query);
-	  }
+    }
 }
-
 ?>
