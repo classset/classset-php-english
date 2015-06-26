@@ -42,3 +42,4 @@ class V_CreateUserForm implements IView
             ->display();
     }
 }
+?>

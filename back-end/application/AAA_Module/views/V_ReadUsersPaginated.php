@@ -66,3 +66,4 @@ class V_ReadUsersPaginated implements IView, IDataset
         $dom->display();
     }
 }
+?>

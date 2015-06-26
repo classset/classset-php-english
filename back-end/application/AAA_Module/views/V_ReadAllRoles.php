@@ -61,3 +61,4 @@ class V_ReadAllRoles implements IView, IDataset
         $dom->display();
     }
 }
+?>

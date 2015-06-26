@@ -61,3 +61,4 @@ class V_ReadAllUsers implements IView, IDataset
         $dom->display();
     }
 }
+?>

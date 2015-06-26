@@ -41,9 +41,10 @@ class V_Messenger implements IView, IDataset
 
         $session = SessionFactory::create();
         $dom->whereIdIs('login-user')
-                ->insertNode($session->get('session-user-name'));    
+                ->insertNode($session->get('session-user-name'));
         
         $dom->display();
         exit();
     }
 }
+?>

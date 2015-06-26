@@ -49,3 +49,4 @@ class V_DeleteUserConfirmation implements IView, IDataset
             ->display();
     }
 }
+?>

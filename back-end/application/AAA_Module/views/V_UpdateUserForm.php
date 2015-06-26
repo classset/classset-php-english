@@ -52,3 +52,4 @@ class V_UpdateUserForm implements IView, IDataset
             ->display();
     }
 }
+?>

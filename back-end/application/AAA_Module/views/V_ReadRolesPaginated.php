@@ -67,3 +67,4 @@ class V_ReadRolesPaginated implements IView, IDataset
         $dom->display();
     }
 }
+?>

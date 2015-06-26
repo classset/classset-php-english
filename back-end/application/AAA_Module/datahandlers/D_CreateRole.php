@@ -23,15 +23,14 @@
  **/
 
 class D_CreateRole implements IDataset
-{	
-	public function setInData($data)
-	{  
+{
+    public function setInData($data)
+    {
         $name = $data['name'];
         $description = $data['description'];
         $query = "INSERT INTO roles (name, description) VALUES ('$name', '$description')";
         $db = DatabaseFactory::create()->connect();
         $db->SQLQuery($query);
-	}
+    }
 }
-
 ?>

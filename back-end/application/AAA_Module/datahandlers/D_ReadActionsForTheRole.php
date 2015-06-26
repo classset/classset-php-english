@@ -22,18 +22,18 @@
  *  WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  **/
 
-class D_ReadActionsForTheRole implements IDataset, IDataget 
-{	
-	private $data;
+class D_ReadActionsForTheRole implements IDataset, IDataget
+{
+    private $data;
 
-	public function setInData($data)
-	{
-		$this->data = $data;
-	}
+    public function setInData($data)
+    {
+        $this->data = $data;
+    }
 
-	public function getOutData()
-	{
-		$id = $this->data;
+    public function getOutData()
+    {
+        $id = $this->data;
  
         $query = "SELECT actions.*, 1 as status
                   FROM actions 
@@ -41,22 +41,21 @@ class D_ReadActionsForTheRole implements IDataset, IDataget
                   ON roles_actions.action_name = actions.name
                   WHERE roles_actions.role_id = $id
 
-				  UNION
+                  UNION
 
-				  SELECT actions.*, 0 as status
+                  SELECT actions.*, 0 as status
                   FROM actions 
                   WHERE actions.name NOT IN 
                   (
-                  	SELECT actions.name
-			      	FROM actions
-		    	  	LEFT JOIN roles_actions
-		          	ON roles_actions.action_name = actions.name
-		          	WHERE roles_actions.role_id = $id
-		          ) ORDER BY actions.name DESC";
+                    SELECT actions.name
+                    FROM actions
+                    LEFT JOIN roles_actions
+                    ON roles_actions.action_name = actions.name
+                    WHERE roles_actions.role_id = $id
+                  ) ORDER BY actions.name DESC";
 
         $db = DatabaseFactory::create()->connect();
         return $db->SQLFetchAllArray($query);
-	}
+    }
 }
-
 ?>

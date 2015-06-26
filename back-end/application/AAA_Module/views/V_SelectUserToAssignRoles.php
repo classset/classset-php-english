@@ -55,3 +55,4 @@ class V_SelectUserToAssignRoles implements IView, IDataset
         $dom->display();
     }
 }
+?>

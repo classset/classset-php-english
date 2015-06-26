@@ -23,15 +23,15 @@
  **/
 
 class D_CreateUser implements IDataset
-{	
-	public function setInData($data)
-	{  
+{
+    public function setInData($data)
+    {
         $name = $data['name'];
         $password = $data['password'];
         $query = "INSERT INTO users (name, password) VALUES ('$name', '$password')";
         $db = DatabaseFactory::create()->connect();
         $db->SQLQuery($query);
-	}
+    }
 }
 
 ?>

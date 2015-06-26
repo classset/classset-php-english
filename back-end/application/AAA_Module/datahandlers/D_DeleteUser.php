@@ -23,14 +23,13 @@
  **/
 
 class D_DeleteUser implements IDataset
-{	
-	public function setInData($data)
-	{  
-		$id = $data;
+{
+    public function setInData($data)
+    {
+        $id = $data;
         $query = "DELETE FROM users WHERE id=$id";
         $db = DatabaseFactory::create()->connect();
         $db->SQLQuery($query);
-	}
+    }
 }
-
 ?>

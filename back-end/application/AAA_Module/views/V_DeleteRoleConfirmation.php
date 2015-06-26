@@ -38,7 +38,7 @@ class V_DeleteRoleConfirmation implements IView, IDataset
         $dom->setDocumentFromFile(ROLES_HTML)
 
         ->whereIdIs('login-user')
-        ->insertNode($session->get('session-user-name'))   
+        ->insertNode($session->get('session-user-name'))
                 
         ->whereIdIs('delete-form')
         ->removeAttribute('style="display: none;"')
@@ -49,3 +49,4 @@ class V_DeleteRoleConfirmation implements IView, IDataset
         ->display();
     }
 }
+?>

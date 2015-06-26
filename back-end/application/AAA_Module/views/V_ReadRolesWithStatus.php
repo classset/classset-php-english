@@ -40,20 +40,20 @@ class V_ReadRolesWithStatus implements IView, IDataset
             ->insertNode('Role Assignment for: '.$this->data['user-name']);
 
         $dom->whereIdIs('roles-assignment-form')
-                ->removeAttribute('style="display: none;"');  
+                ->removeAttribute('style="display: none;"');
 
         $session = SessionFactory::create();
         $dom->whereIdIs('login-user')
-                ->insertNode($session->get('session-user-name'));    
+                ->insertNode($session->get('session-user-name'));
 
-        foreach($this->data['user-roles'] as $userRole) 
+        foreach($this->data['user-roles'] as $userRole)
         {
-            if ($userRole['status'] == 1) 
+            if ($userRole['status'] == 1)
             {
                 $dom->whereIdIs('role-assignment-checkboxs')
                     ->insertNode(   
                                     '<div class="checkbox">
-                                        <input name="selected-roles-ids[]" 
+                                        <input name="selected-roles-ids[]"
                                             type="checkbox" 
                                             value="'.$userRole['id'].'" checked
                                         >
@@ -69,7 +69,7 @@ class V_ReadRolesWithStatus implements IView, IDataset
                 $dom->whereIdIs('role-assignment-checkboxs')
                     ->insertNode(   
                                     '<div class="checkbox">
-                                        <input name="selected-roles-ids[]" 
+                                        <input name="selected-roles-ids[]"
                                             type="checkbox" 
                                             value="'.$userRole['id'].'">
                                         <label>
@@ -77,7 +77,7 @@ class V_ReadRolesWithStatus implements IView, IDataset
                                             .$userRole['description'].
                                         '</label>
                                     </div>'
-                                );                
+                                );
             }
 
         }
@@ -85,4 +85,4 @@ class V_ReadRolesWithStatus implements IView, IDataset
         $dom->display();
     }
 }
-
+?>
