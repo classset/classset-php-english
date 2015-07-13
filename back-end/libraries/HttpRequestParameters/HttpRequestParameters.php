@@ -34,7 +34,9 @@ class HttpRequestParameters implements IParameters
         $this->_request = $request;
         foreach ($this->_request as $key => $value) 
         {
-            $this->_parameters[$key] = $value;
+            $filteredKey = $this->escape($key);
+            $filteredValue = $this->escape($value);
+            $this->_parameters[$filteredKey] = $filteredValue;
         }
     }
 
@@ -56,6 +58,14 @@ class HttpRequestParameters implements IParameters
             'Invalid Operation: You can not deserialize an instance of '
             . get_class($this) ." class."
         );
+    }
+
+    private function escape($str)
+    {
+        $data = trim($str);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
     }
 
     public static function getInstance($request)

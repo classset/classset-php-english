@@ -53,6 +53,14 @@ class HttpRequestParser implements IParser
         );
     }
 
+    private function escape($str)
+    {
+        $data = trim($str);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }
+
     public static function getInstance()
     {
         if (!(self::$_instance instanceof self))
@@ -74,7 +82,7 @@ class HttpRequestParser implements IParser
         {
             $actionKey = $input['claction'];
         }
-        return $actionKey;
+        return $this->escape(SQLite3::escapeString($actionKey));
     }
 }
 ?>
