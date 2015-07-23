@@ -25,12 +25,13 @@
 class HttpRequestParser implements IParser
 {
     private static $_instance;
-
+    private $filter;
 
     /* methods: */
-    private function __construct()
+    private function __construct($filter)
     {
         //ctor
+        $this->filter = $filter;
     }
 
     //to_prevent cloned:
@@ -53,19 +54,11 @@ class HttpRequestParser implements IParser
         );
     }
 
-    private function escape($str)
-    {
-        $data = trim($str);
-        $data = stripslashes($data);
-        $data = htmlspecialchars($data);
-        return $data;
-    }
-
-    public static function getInstance()
+    public static function createWith($filter)
     {
         if (!(self::$_instance instanceof self))
         {
-            self::$_instance=new self();
+            self::$_instance=new self($filter);
         }
         return self::$_instance;
     }
@@ -82,7 +75,7 @@ class HttpRequestParser implements IParser
         {
             $actionKey = $input['claction'];
         }
-        return $this->escape(SQLite3::escapeString($actionKey));
+        return $this->filter->filters($actionKey);
     }
 }
 ?>

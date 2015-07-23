@@ -34,14 +34,6 @@ class A_UpdateRole implements IAction
         $session = SessionFactory::create();
         $id = $session->get('role-id');
 
-        //FILTERS
-        $filter = FilterFactory::create();
-        $filteredName = $filter->filters($name);
-        $filteredDescription = $filter->filters($description);
-
-        //VALIDATOR
-        $validator = ValidatorFactory::create();
-
         //DATASET
         $datahandler = DatahandlerFactory::create('D_UpdateRole');
         $datahandler->setInData
@@ -49,8 +41,8 @@ class A_UpdateRole implements IAction
                         array
                         (
                             "id" => "$id",
-                            "name" => "$filteredName", 
-                            "description" => "$filteredDescription"
+                            "name" => "$name", 
+                            "description" => "$description"
                         )
                     );
 
